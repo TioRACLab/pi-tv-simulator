@@ -5,23 +5,16 @@ import xbmcaddon
 import random
 import outro
 
-playlist = None
-
 if __name__ == '__main__':
     monitor = xbmc.Monitor()
+    start = xbmcaddon.Addon("script.service.pi-tv-simulator").getSetting('start')
+    xbmc.log(msg='Teste no outro: ' + str(start), level=xbmc.LOGDEBUG);
     
     while not monitor.abortRequested():
 
-        if (playlist == None):
-            videos = outro.findChannelFiles()
-            random.shuffle(videos)
-            playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
-
-            for video in videos:
-                playlist.add(url=video)
-
-            xbmc.Player().play(playlist)
-            xbmc.executebuiltin("PlayerControl(RepeatAll)")
+        if (start == 'true'):
+            outro.start()
+            start = False
 
         # Sleep/wait for abort for 10 seconds
         if monitor.waitForAbort(10):

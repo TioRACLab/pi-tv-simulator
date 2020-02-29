@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-	<category label="30015">
-		<setting id="pastinha" type="folder" label="30004" default=""/>
+	<category label="30100">
+		<setting id="pastinha" type="folder" label="30101" default=""/>
+		<setting id="start" label="30102" type="bool" default="false"/>
 	</category>
 </settings>
