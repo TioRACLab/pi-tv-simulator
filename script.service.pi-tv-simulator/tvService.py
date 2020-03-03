@@ -13,7 +13,13 @@ if __name__ == '__main__':
     while not monitor.abortRequested():
 
         if (start == 'true'):
-            outro.start()
+            #outro.start()
+            #xbmc.executebuiltin('XBMC.RunAddon(script.service.pi-tv-simulator)')
+            aquivo = "D:\\Code\\pi-tv-simulator\\script.service.pi-tv-simulator\\resources\\background.mp4"
+            playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+            playlist.add(url=aquivo)
+            xbmc.Player().play(playlist)
+            xbmc.executebuiltin("PlayerControl(RepeatAll)")
             start = False
 
         # Sleep/wait for abort for 10 seconds

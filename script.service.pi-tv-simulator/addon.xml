@@ -6,8 +6,8 @@
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
-  <extension point="xbmc.service" library="tvSimulator.py" />
-  <extension point="xbmc.python.pluginsource" library="tvSimulator2.py">
+  <extension point="xbmc.service" library="tvService.py" />
+  <extension point="xbmc.python.pluginsource" library="tvAddon.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
