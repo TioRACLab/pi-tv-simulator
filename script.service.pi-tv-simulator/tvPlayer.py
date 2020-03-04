@@ -1,3 +1,7 @@
+"""
+Manager the player of TV Simulator
+"""
+
 import os
 import time
 import xbmc

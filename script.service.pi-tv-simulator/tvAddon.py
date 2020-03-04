@@ -1,10 +1,14 @@
+"""
+AddOn starting
+"""
+
 import os
 import time
 import xbmc
 import xbmcgui
 import xbmcaddon
 import random
-import outro
+import tvPlayer
 
 class TestWindow(xbmcgui.WindowDialog):
     def __init__(self):
@@ -13,7 +17,7 @@ class TestWindow(xbmcgui.WindowDialog):
         self.addControl(self.label1)
 
 
-outro.start()
+tvPlayer.start()
 window = TestWindow()
 window.doModal()
 
