@@ -9,7 +9,7 @@ import xbmcaddon
 
 
 def startAddon():
-    start = xbmcaddon.Addon("script.service.pi-tv-simulator").getSetting('start')
+    start = xbmcaddon.Addon("script.service.pi-tv-simulator").getSettingBool('start')
     xbmc.log(msg='Loading TV - Start TV simulator? ' + str(start), level=xbmc.LOGDEBUG)
 
     if (start):
