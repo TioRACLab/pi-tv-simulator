@@ -36,7 +36,12 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         #61554 - 2
         #61555 - 3
         #61556 - 4
-        #
+        #61557 - 5
+        #61558 - 6
+        #61559 - 7
+        #61560 - 8
+        #61561 - 9
+        #61552 - 0
 
 
         key = None if code == 0 else str(code)
