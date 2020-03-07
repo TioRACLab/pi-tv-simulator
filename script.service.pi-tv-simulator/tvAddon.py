@@ -8,8 +8,8 @@ import xbmc
 import random
 import xbmcgui
 import xbmcaddon
-import lib.tvPlayer as tvPlayer
-import lib.tvSimulatorWindow as tvSimulatorWindow
+import tvPlayer
+import tvSimulatorWindow
 
 
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<coordinates>
+		<left>0</left>
+		<top>0</top>
+	</coordinates>
+	<controls>
+		<control type="group" id="15001">
+			<depth>DepthMax</depth>
+			<control type="label" id="15002">
+				<left>0</left>
+				<top>0</top>
+				<width>200</width>
+				<height>200</height>
+				<textcolor>FF00FF00</textcolor>
+                <font>WeatherTemp</font>
+			</control>
+			
+		</control>
+	</controls>
+</window>
