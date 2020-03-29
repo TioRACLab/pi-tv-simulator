@@ -21,9 +21,11 @@ def startAddon():
 if __name__ == '__main__':
     
     startAddon()
-    #monitor = xbmc.Monitor()
+    monitor = xbmc.Monitor()
     
-    #while not monitor.abortRequested():
+    while not monitor.abortRequested():
+        if monitor.waitForAbort(10):
+            break
 
     #Testing
     #aquivo = "D:\\Code\\pi-tv-simulator\\script.service.pi-tv-simulator\\resources\\background.mp4"
@@ -33,6 +35,4 @@ if __name__ == '__main__':
     #xbmc.executebuiltin("PlayerControl(RepeatAll)")
 
     # Sleep/wait for abort for 10 seconds
-    #if monitor.waitForAbort(10):
-        # Abort was requested while waiting. We should exit
-    #break
+    

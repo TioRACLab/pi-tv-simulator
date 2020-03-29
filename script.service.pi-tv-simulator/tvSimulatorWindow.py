@@ -3,6 +3,8 @@ import xbmc
 import xbmcgui
 import xbmcaddon
 
+import channel
+
 currentWindow = None
 
 class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
@@ -43,11 +45,23 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         #61561 - 9
         #61552 - 0
 
+        if (code == 61568):
+            xbmc.log(msg='Up Channel', level=xbmc.LOGDEBUG)
+            channel.upChannel()
+
+        if (code == 61569):
+            xbmc.log(msg='Down Channel', level=xbmc.LOGDEBUG)
+            channel.downChannel()
+        
+        if (code == 61467):
+            self.close()
+
 
         key = None if code == 0 else str(code)
         xbmc.log(msg='BottunCode??? ' + str(key), level=xbmc.LOGDEBUG)
 
-
+def close():
+    super().close()
 
 '''
 class ThreadTvWindow(threading.Thread):

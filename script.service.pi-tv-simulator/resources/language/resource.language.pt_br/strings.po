@@ -17,13 +17,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgctxt "#30100"
-msgid "Categoria Teste"
-msgstr "Categoria Teste"
+msgid "General"
+msgstr "Geral"
 
 msgctxt "#30101"
-msgid "Pastinha"
-msgstr "Pastinha"
+msgid "Last Channel"
+msgstr "Último Canal"
 
 msgctxt "#30102"
 msgid "Start"
 msgstr "Start"
+
+msgctxt "#30103"
+msgid "Directory"
+msgstr "Diretório"
+
+msgctxt "#30104"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "#30105"
+msgid "Enable"
+msgstr "Habilitar"
+
+
+msgctxt "#30110"
+msgid "Channel 1"
+msgstr "Canal 1"
+
+msgctxt "#30120"
+msgid "Channel 2"
+msgstr "Canal 2"
+
+msgctxt "#30130"
+msgid "Channel 3"
+msgstr "Canal 3"
+
+msgctxt "#30140"
+msgid "Channel 4"
+msgstr "Canal 4"
+
+msgctxt "#30150"
+msgid "Channel 5"
+msgstr "Canal 5"

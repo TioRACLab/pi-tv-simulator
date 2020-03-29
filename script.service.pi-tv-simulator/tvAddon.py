@@ -8,11 +8,13 @@ import xbmc
 import random
 import xbmcgui
 import xbmcaddon
-import tvPlayer
+import channel
 import tvSimulatorWindow
 
 
 
 #xbmc.executebuiltin('XBMC.RunScript(Q:\Scripts\myscript.py)')
-tvPlayer.start()
+
+channel.loadAllChannels()
+channel.loadLastChannel()
 tvSimulatorWindow.startWindow()

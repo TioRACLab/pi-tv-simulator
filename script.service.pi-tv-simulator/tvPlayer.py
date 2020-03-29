@@ -10,27 +10,29 @@ import random
 
 playlist = None
 
-def findChannelFiles():
-    path =  xbmcaddon.Addon("script.service.pi-tv-simulator").getSetting('pastinha')
+def findChannelFiles(folder):
     files = []
     #xbmc.log(msg='Teste no outro.', level=xbmc.LOGDEBUG);
 
     # r=root, d=directories, f = files
-    for r, d, f in os.walk(path):
+    for r, d, f in os.walk(folder):
         for file in f:
             files.append(os.path.join(r, file))
     
     return files
 
-def start():
+
+
+def start(folder):
     global playlist
-    if (playlist == None):
-        videos = findChannelFiles()
-        random.shuffle(videos)
-        playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+    xbmc.executebuiltin("Playlist.Clear")
+    time.sleep(0.5)
+    videos = findChannelFiles(folder)
+    random.shuffle(videos)
+    playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
 
-        for video in videos:
-            playlist.add(url=video)
+    for video in videos:
+        playlist.add(url=video)
 
-        xbmc.Player().play(playlist)
-        xbmc.executebuiltin("PlayerControl(RepeatAll)")
+    xbmc.Player().play(playlist)
+    xbmc.executebuiltin("PlayerControl(RepeatAll)")
