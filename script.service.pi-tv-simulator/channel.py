@@ -34,6 +34,7 @@ def loadAllChannels():
 def changeCurrentChannel(number):
     global channels, currentChannel, currentNumberChannel
     currentNumberChannel = number
+    xbmcaddon.Addon("script.service.pi-tv-simulator").setSettingInt('lastChannel', int(number))
 
     for channel in channels:
         if (channel.number == number):
@@ -43,6 +44,7 @@ def changeCurrentChannel(number):
             return currentChannel
 
     currentChannel = None
+    tvPlayer.startNoSignal()
     return None
 
 def loadLastChannel():

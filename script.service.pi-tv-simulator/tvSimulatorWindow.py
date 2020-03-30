@@ -60,8 +60,11 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         key = None if code == 0 else str(code)
         xbmc.log(msg='BottunCode??? ' + str(key), level=xbmc.LOGDEBUG)
 
-def close():
-    super().close()
+    def close(self):
+        xbmc.log(msg='Close TV!', level=xbmc.LOGDEBUG)
+        xbmcgui.WindowXMLDialog.close(self)
+        
+        
 
 '''
 class ThreadTvWindow(threading.Thread):

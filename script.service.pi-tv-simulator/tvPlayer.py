@@ -21,8 +21,6 @@ def findChannelFiles(folder):
     
     return files
 
-
-
 def start(folder):
     global playlist
     xbmc.executebuiltin("Playlist.Clear")
@@ -34,5 +32,15 @@ def start(folder):
     for video in videos:
         playlist.add(url=video)
 
+    xbmc.Player().play(playlist)
+    xbmc.executebuiltin("PlayerControl(RepeatAll)")
+
+def startNoSignal():
+    global playlist
+    noSignalVideo = os.path.join(xbmcaddon.Addon().getAddonInfo('path'), "resources", "background.mp4")
+    xbmc.executebuiltin("Playlist.Clear")
+    time.sleep(0.5)
+    playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+    playlist.add(url=noSignalVideo)
     xbmc.Player().play(playlist)
     xbmc.executebuiltin("PlayerControl(RepeatAll)")
