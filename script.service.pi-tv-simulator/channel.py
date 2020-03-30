@@ -1,3 +1,5 @@
+"""Manager channels"""
+
 import xbmc
 import tvPlayer
 import xbmcaddon
@@ -7,17 +9,21 @@ currentNumberChannel = 0
 currentChannel = None
 
 class Channel(object):
+    """Class of a channel object"""
     
     def __init__(self, number = 0, directory = ""):
+        """Create instance, with number channel and media directory"""
         object.__init__(self)
         self.number = number
         self.directory = directory
 
     def play(self):
+        """Play channel"""
         tvPlayer.start(self.directory)
 
 
 def loadAllChannels():
+    """Load all channels from settings"""
     global channels
 
     for x in range(1, 5):
@@ -32,6 +38,7 @@ def loadAllChannels():
     channels.sort(key=lambda c: c.number)
 
 def changeCurrentChannel(number):
+    """Change channel by number"""
     global channels, currentChannel, currentNumberChannel
     currentNumberChannel = number
     xbmcaddon.Addon("script.service.pi-tv-simulator").setSettingInt('lastChannel', int(number))
@@ -48,6 +55,7 @@ def changeCurrentChannel(number):
     return None
 
 def loadLastChannel():
+    """Load last channel from settings"""
     number = xbmcaddon.Addon("script.service.pi-tv-simulator").getSettingInt('lastChannel')
     channel = changeCurrentChannel(number)
 
@@ -57,6 +65,7 @@ def loadLastChannel():
     return channel
 
 def upChannel():
+    """Go up to the next valid channel"""
     for channel in channels:
         if (channel.number > currentNumberChannel):
             return changeCurrentChannel(channel.number)
@@ -67,6 +76,7 @@ def upChannel():
         return changeCurrentChannel(currentNumberChannel + 1)
 
 def downChannel():
+    """Go down to the next valid channel"""
     x = len(channels) - 1
     while(x >= 0):
         channel = channels[x]

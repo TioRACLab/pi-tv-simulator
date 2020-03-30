@@ -22,11 +22,9 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         self.group.setWidth(self.getWidth())
         self.group.setHeight(self.getHeight())
 
-
-        self.label1 = self.getControl(15002)
-        self.label1.setPosition(self.getWidth() - 200, 30)
-        self.label1.setLabel('02')
-
+        self.labelNumber = self.getControl(15002)
+        self.labelNumber.setPosition(self.getWidth() - 200, 30)
+        self.changeChannelNumber()
 
     def onAction(self, action):
         code = action.getButtonCode()
@@ -48,10 +46,12 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         if (code == 61568):
             xbmc.log(msg='Up Channel', level=xbmc.LOGDEBUG)
             channel.upChannel()
+            self.changeChannelNumber()
 
         if (code == 61569):
             xbmc.log(msg='Down Channel', level=xbmc.LOGDEBUG)
             channel.downChannel()
+            self.changeChannelNumber()
         
         if (code == 61467):
             self.close()
@@ -64,7 +64,8 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         xbmc.log(msg='Close TV!', level=xbmc.LOGDEBUG)
         xbmcgui.WindowXMLDialog.close(self)
         
-        
+    def changeChannelNumber(self):
+        self.labelNumber.setLabel(str(channel.currentNumberChannel).zfill(2))
 
 '''
 class ThreadTvWindow(threading.Thread):

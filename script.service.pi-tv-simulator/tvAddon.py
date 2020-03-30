@@ -12,9 +12,6 @@ import channel
 import tvSimulatorWindow
 
 
-
-#xbmc.executebuiltin('XBMC.RunScript(Q:\Scripts\myscript.py)')
-
 channel.loadAllChannels()
 channel.loadLastChannel()
 tvSimulatorWindow.startWindow()
