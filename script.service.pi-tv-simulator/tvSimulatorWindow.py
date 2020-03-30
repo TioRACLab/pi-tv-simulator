@@ -8,9 +8,10 @@ import channel
 currentWindow = None
 
 class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
-    """Principal AddOn window"""
+    """TV Simulator AddOn Window"""
 
     def __init__(self, *args, **kwargs):
+        """Create instance"""
         self.addon = xbmcaddon.Addon()
         xbmcgui.WindowXMLDialog.__init__(self, *args, **kwargs)
 
@@ -18,6 +19,7 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         #self.label1 = xbmcgui.ControlLabel(self.getWidth() - 200, 30, 200, 900, '01', textColor ='0xFF00FF00', font="WeatherTemp")
 
     def onInit(self):
+        """On init, create controls"""
         self.group = self.getControl(15001)
         self.group.setWidth(self.getWidth())
         self.group.setHeight(self.getHeight())
@@ -27,6 +29,7 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         self.changeChannelNumber()
 
     def onAction(self, action):
+        """Get keyboard interaction"""
         code = action.getButtonCode()
         #61568 - Cima
         #61569 - Baixo
@@ -61,6 +64,7 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         xbmc.log(msg='BottunCode??? ' + str(key), level=xbmc.LOGDEBUG)
 
     def close(self):
+        """Close window"""
         xbmc.log(msg='Close TV!', level=xbmc.LOGDEBUG)
         xbmcgui.WindowXMLDialog.close(self)
         
