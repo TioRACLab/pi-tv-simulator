@@ -40,6 +40,9 @@ msgctxt "#30105"
 msgid "Enable"
 msgstr "Habilitar"
 
+msgctxt "#30106"
+msgid "Enable TV Commercials"
+msgstr "Habilitar Comerciais"
 
 msgctxt "#30110"
 msgid "Channel 1"
@@ -60,3 +63,7 @@ msgstr "Canal 4"
 msgctxt "#30150"
 msgid "Channel 5"
 msgstr "Canal 5"
+
+msgctxt "#30160"
+msgid "TV Commercials"
+msgstr "Comerciais"

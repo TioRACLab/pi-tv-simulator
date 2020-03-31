@@ -20,7 +20,7 @@ def findChannelFiles(folder):
     
     return files
 
-def start(folder):
+def start(folder, enableCommercials = False):
     """Start play channel media from media directory"""
     global playlist
     xbmc.executebuiltin("Playlist.Clear")
@@ -29,8 +29,17 @@ def start(folder):
     random.shuffle(videos)
     playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
 
-    for video in videos:
-        playlist.add(url=video)
+    if (enableCommercials):
+        commercialsFolder = xbmcaddon.Addon("script.service.pi-tv-simulator").getSetting('commercialsFolder')
+        commercials = findChannelFiles(commercialsFolder)
+        random.shuffle(commercials)
+        for video in videos:
+            playlist.add(url=video)
+            if (len(commercials) > 0):
+                playlist.add(url=commercials[random.randint(0, len(commercials) - 1)])
+    else:
+        for video in videos:
+            playlist.add(url=video)
 
     xbmc.Player().play(playlist)
     xbmc.executebuiltin("PlayerControl(RepeatAll)")

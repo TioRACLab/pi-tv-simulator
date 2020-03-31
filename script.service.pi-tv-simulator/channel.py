@@ -11,15 +11,16 @@ currentChannel = None
 class Channel(object):
     """Class of a channel object"""
     
-    def __init__(self, number = 0, directory = ""):
+    def __init__(self, number = 0, directory = "", commercials = True):
         """Create instance, with number channel and media directory"""
         object.__init__(self)
         self.number = number
         self.directory = directory
+        self.commercials = commercials
 
     def play(self):
         """Play channel"""
-        tvPlayer.start(self.directory)
+        tvPlayer.start(self.directory, self.commercials)
 
 
 def loadAllChannels():
@@ -32,7 +33,8 @@ def loadAllChannels():
         if (enable):
             number = xbmcaddon.Addon("script.service.pi-tv-simulator").getSettingInt('channel' + str(x) + 'Number')
             directory = xbmcaddon.Addon("script.service.pi-tv-simulator").getSetting('channel' + str(x) + 'Folder')
-            channel = Channel(number, directory)
+            commercials = xbmcaddon.Addon("script.service.pi-tv-simulator").getSetting('channel' + str(x) + 'Commercials')
+            channel = Channel(number, directory, commercials)
             channels.append(channel)
     
     channels.sort(key=lambda c: c.number)

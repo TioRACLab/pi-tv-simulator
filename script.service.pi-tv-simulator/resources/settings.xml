@@ -9,25 +9,33 @@
 		<setting id="channel1Enabled" label="30105" type="bool" default="false"/>
 		<setting id="channel1Number" type="number" label="30104" default=""/>
 		<setting id="channel1Folder" type="folder" label="30103" default=""/>
+		<setting id="channel1Commercials" type="bool" label="30106" default="true"/>
 	</category>
 	<category label="30120">
 		<setting id="channel2Enabled" label="30105" type="bool" default="false"/>
 		<setting id="channel2Number" type="number" label="30104" default=""/>
 		<setting id="channel2Folder" type="folder" label="30103" default=""/>
+		<setting id="channel2Commercials" type="bool" label="30106" default="true"/>
 	</category>
 	<category label="30130">
 		<setting id="channel3Enabled" label="30105" type="bool" default="false"/>
 		<setting id="channel3Number" type="number" label="30104" default=""/>
 		<setting id="channel3Folder" type="folder" label="30103" default=""/>
+		<setting id="channel3Commercials" type="bool" label="30106" default="true"/>
 	</category>
 	<category label="30140">
 		<setting id="channel4Enabled" label="30105" type="bool" default="false"/>
 		<setting id="channel4Number" type="number" label="30104" default=""/>
 		<setting id="channel4Folder" type="folder" label="30103" default=""/>
+		<setting id="channel4Commercials" type="bool" label="30106" default="true"/>
 	</category>
 	<category label="30150">
 		<setting id="channel5Enabled" label="30105" type="bool" default="false"/>
 		<setting id="channel5Number" type="number" label="30104" default=""/>
 		<setting id="channel5Folder" type="folder" label="30103" default=""/>
+		<setting id="channel5Commercials" type="bool" label="30106" default="true"/>
+	</category>
+	<category label="30160">
+		<setting id="commercialsFolder" type="folder" label="30103" default=""/>
 	</category>
 </settings>
