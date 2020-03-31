@@ -70,6 +70,7 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         """Close window"""
         xbmc.log(msg='Close TV!', level=xbmc.LOGDEBUG)
         self.tvInterface.stop()
+        self.tvInterface = None
         xbmcgui.WindowXMLDialog.close(self)
         
     def changeChannelNumber(self):
