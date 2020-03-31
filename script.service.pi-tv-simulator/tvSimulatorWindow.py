@@ -2,8 +2,9 @@ import os
 import xbmc
 import xbmcgui
 import xbmcaddon
-
 import channel
+
+import tvInterfaceControl
 
 currentWindow = None
 
@@ -26,6 +27,8 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
 
         self.labelNumber = self.getControl(15002)
         self.labelNumber.setPosition(self.getWidth() - 200, 30)
+        self.tvInterface = tvInterfaceControl.TvInterfaceControl(self)
+        self.tvInterface.start()
         self.changeChannelNumber()
 
     def onAction(self, action):
@@ -66,28 +69,15 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
     def close(self):
         """Close window"""
         xbmc.log(msg='Close TV!', level=xbmc.LOGDEBUG)
+        self.tvInterface.stop()
         xbmcgui.WindowXMLDialog.close(self)
         
     def changeChannelNumber(self):
-        self.labelNumber.setLabel(str(channel.currentNumberChannel).zfill(2))
+        xbmc.log(msg='Change Channel Number', level=xbmc.LOGDEBUG)
+        self.tvInterface.addChannel(channel.currentNumberChannel)
 
-'''
-class ThreadTvWindow(threading.Thread):
-    """Thread for control to TV Simulator Window"""
-    
-    def __init__(self):
-        """Create Thread Class"""
-        threading.Thread.__init__(self)
-        self._window = TvSimulatorWindow()
-
-    def run(self):
-        """Open Tv Simulator Window"""
-        self._window.doModal()
-
-    def getWindow(self):
-        """Return current Window"""
-        return self._window
-'''
+    def changeLabelChannel(self, text):
+        self.labelNumber.setLabel(str(text))
 
 def startWindow():
     """Create Window and open"""
