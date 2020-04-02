@@ -53,13 +53,31 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
             xbmc.log(msg='Up Channel', level=xbmc.LOGDEBUG)
             channel.upChannel()
             self.changeChannelNumber()
-
-        if (code == 61569):
+        elif (code == 61569):
             xbmc.log(msg='Down Channel', level=xbmc.LOGDEBUG)
             channel.downChannel()
             self.changeChannelNumber()
-        
-        if (code == 61467):
+        elif (code == 61552):
+            self.tvInterface.addCharSelection("0")
+        elif (code == 61553):
+            self.tvInterface.addCharSelection("1")
+        elif (code == 61554):
+            self.tvInterface.addCharSelection("2")
+        elif (code == 61555):
+            self.tvInterface.addCharSelection("3")
+        elif (code == 61556):
+            self.tvInterface.addCharSelection("4")
+        elif (code == 61557):
+            self.tvInterface.addCharSelection("5")
+        elif (code == 61558):
+            self.tvInterface.addCharSelection("6")
+        elif (code == 61559):
+            self.tvInterface.addCharSelection("7")
+        elif (code == 61560):
+            self.tvInterface.addCharSelection("8")
+        elif (code == 61561):
+            self.tvInterface.addCharSelection("9")
+        elif (code == 61467):
             self.close()
 
 

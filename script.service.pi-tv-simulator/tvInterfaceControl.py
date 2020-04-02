@@ -2,6 +2,7 @@
 
 import time
 import xbmc
+
 import channel
 import threading
 from datetime import datetime
@@ -17,12 +18,16 @@ class TvInterfaceControl(threading.Thread):
         self.dateStartSelection = None
         self.selected = False
         self._stop = False
+        self._monitor = xbmc.Monitor()
 
     def run(self):
         """Process looping"""
         while not self._stop:
             self.processSelectionChannel()
             time.sleep(0.5)
+
+            if (self._monitor.abortRequested()):
+                break
 
     #Manager selection channel
 
@@ -34,7 +39,7 @@ class TvInterfaceControl(threading.Thread):
                     if (self.selected):
                         self.hideSelecion()
                     else:
-                        channel.changeCurrentChannel(self.selection)
+                        channel.changeCurrentChannel(int(self.selection))
                         self.addChannel(self.selection)
 
     def addChannel(self, channel):
@@ -46,13 +51,18 @@ class TvInterfaceControl(threading.Thread):
 
     def addCharSelection(self, char):
         """Select one char and wait new selection"""
+        self.selected = False
+        self.dateStartSelection = datetime.now()
+
         if (self.selection == None or len(self.selection) == 2):
             self.selection = str(char)
         else:
             self.selection += str(char)
+            if (len(self.selection) == 2):
+                self.selected = True
+                channel.changeCurrentChannel(int(self.selection))
         
-        self.selected = False
-        self.dateStartSelection = datetime.now()
+        
         self.showSelection()
 
     def showSelection(self):
@@ -62,7 +72,7 @@ class TvInterfaceControl(threading.Thread):
         if (self.selected):
             labelText = str(self.selection).ljust(2, '0')
         else:
-            labelText = str(self.selection).rjust(2, "-")
+            labelText = str(self.selection).ljust(2, "-")
             
 
         self.tvWindow.changeLabelChannel(labelText)
