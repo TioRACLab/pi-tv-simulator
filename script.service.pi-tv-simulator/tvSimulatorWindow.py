@@ -4,7 +4,7 @@ import xbmcgui
 import xbmcaddon
 import channel
 
-import tvInterfaceControl
+#import tvInterfaceControl
 
 currentWindow = None
 
@@ -27,9 +27,10 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
 
         self.labelNumber = self.getControl(15002)
         self.labelNumber.setPosition(self.getWidth() - 200, 30)
-        self.tvInterface = tvInterfaceControl.TvInterfaceControl(self)
-        self.tvInterface.start()
+        #self.tvInterface = tvInterfaceControl.TvInterfaceControl(self)
+        #self.tvInterface.start()
         self.changeChannelNumber()
+        self.changeLabelChannel("69")
 
     def onAction(self, action):
         """Get keyboard interaction"""
@@ -57,7 +58,9 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
             xbmc.log(msg='Down Channel', level=xbmc.LOGDEBUG)
             channel.downChannel()
             self.changeChannelNumber()
-        elif (code == 61552):
+        elif (code == 61467):
+            self.close()
+        '''elif (code == 61552):
             self.tvInterface.addCharSelection("0")
         elif (code == 61553):
             self.tvInterface.addCharSelection("1")
@@ -76,9 +79,8 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
         elif (code == 61560):
             self.tvInterface.addCharSelection("8")
         elif (code == 61561):
-            self.tvInterface.addCharSelection("9")
-        elif (code == 61467):
-            self.close()
+            self.tvInterface.addCharSelection("9")'''
+        
 
 
         key = None if code == 0 else str(code)
@@ -87,21 +89,22 @@ class TvSimulatorWindow(xbmcgui.WindowXMLDialog):
     def close(self):
         """Close window"""
         xbmc.log(msg='Close TV!', level=xbmc.LOGDEBUG)
-        self.tvInterface.stop()
-        self.tvInterface = None
+        #self.tvInterface.stop()
+        #self.tvInterface = None
         xbmcgui.WindowXMLDialog.close(self)
         
     def changeChannelNumber(self):
         xbmc.log(msg='Change Channel Number', level=xbmc.LOGDEBUG)
-        self.tvInterface.addChannel(channel.currentNumberChannel)
+        #self.tvInterface.addChannel(channel.currentNumberChannel)
 
     def changeLabelChannel(self, text):
+        xbmc.log(msg='Change Label Number: ' + str(text), level=xbmc.LOGDEBUG)
         self.labelNumber.setLabel(str(text))
 
 def startWindow():
     """Create Window and open"""
     global currentWindow
-    currentWindow = TvSimulatorWindow("tvSimulator.xml", xbmcaddon.Addon().getAddonInfo('path'), 'default', '1080i')
+    currentWindow = TvSimulatorWindow("tvSimulator.xml", xbmcaddon.Addon("script.service.pi-tv-simulator").getAddonInfo('path'), 'default', '1080i')
     currentWindow.doModal()
 
 def getWindow():

@@ -24,10 +24,12 @@ class TvInterfaceControl(threading.Thread):
         """Process looping"""
         while not self._stop:
             self.processSelectionChannel()
-            time.sleep(0.5)
+            time.sleep(1)
 
             if (self._monitor.abortRequested()):
                 break
+
+            self._monitor.waitForAbort(1)
 
     #Manager selection channel
 
